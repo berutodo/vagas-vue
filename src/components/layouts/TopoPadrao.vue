@@ -7,8 +7,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-            <a class="nav-link" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Publicar Vaga</a>
+            <a class="nav-link" aria-current="page" href="#" @click="navegarPara('Home')">Home</a>
+            <a class="nav-link" href="#" @click="navegarPara('PublicarVaga')">Publicar Vaga</a>
         </div>
         </div>
     </div>
@@ -19,6 +19,14 @@
 
 export default {
     name: 'TopoPadrao',
+    props:{
+    },
+    methods:{
+        navegarPara(p){
+            console.log(p)
+            this.$emit('navegar',p)    
+        }
+    },
     components: {
     }
 }

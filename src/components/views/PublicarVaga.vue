@@ -62,6 +62,7 @@ export default {
       salario: '',
       modalidade:'',
       tipo:'',
+      data: new Date().getDate() + '/' + parseInt(new Date().getMonth() + 1) + '/' + new Date().getFullYear()
       }),
     components: {
     },
@@ -77,6 +78,7 @@ export default {
           salario : this.salario,
           modalidade : this.modalidade,
           tipo : this.tipo,
+          publicacao : this.data
         }
         vagas.push(vaga)
         localStorage.setItem('vagas', JSON.stringify(vagas))

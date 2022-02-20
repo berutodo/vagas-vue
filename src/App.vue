@@ -1,7 +1,6 @@
 <template>
-  <h1>Teste</h1>
-  <TopoPadrao/>
-  <Conteudo />
+  <TopoPadrao @navegar="componente = $event"/>
+  <Conteudo :conteudo="componente"/>
 </template>
 
 <script>
@@ -10,9 +9,16 @@ import Conteudo from './components/layouts/Conteudo.vue'
 
 export default {
   name: 'App',
+  data(){
+    return{
+      componente: 'Home'
+    }
+  },
   components: {
     TopoPadrao,
     Conteudo
+  },
+  methods:{
   }
 }
 </script>

@@ -1,11 +1,5 @@
 <template>
-    <h1>Conteudo</h1>
-    <button @click="conteudo = 'home'">Home</button>
-    <button @click="conteudo = 'publicar-vaga'">Publicar Vaga</button>
-   <!-- <home />
-    <publicar-vaga /> -->
     <component :is="conteudo"></component>
-
     
 </template>
 
@@ -16,13 +10,16 @@ export default {
     
 
     name: 'Conteudo',
+    props:{
+        conteudo:{
+            type: String,
+            required: true
+        }
+    },
     components: {
         Home,
         PublicarVaga
     },
-    data: () => ({
-        conteudo: 'home'
-    })
 
 }
 </script>
