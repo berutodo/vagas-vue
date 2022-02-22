@@ -81,8 +81,39 @@ export default {
           publicacao : this.data
         }
         vagas.push(vaga)
+        if(this.validacaoFormulario()){
         localStorage.setItem('vagas', JSON.stringify(vagas))
-        console.log(vaga)
+          this.emitter.emit('alerta', {
+            tipo: 'sucesso',
+            titulo: `A vaga ${this.titulo} foi cadastrada com sucesso`,
+            subtitulo: 'Parabens sua vaga foi cadastrada e pode ser acessada por milhares de pessoas em todo o globo terrestre'
+          })
+        this.resetarFormulario()
+
+        }else{
+          this.emitter.emit('alerta', {
+            tipo: 'erro',
+            titulo: `Preenche essa merda direita seu corno 🐂`,
+            subtitulo: 'Reveja seus dados e tente novamente :)'
+          })
+        }
+        
+      },
+      resetarFormulario(){
+        this.titulo = '',
+        this.descricao = '',
+        this.salario = '',
+        this.modalidade = '',
+        this.tipo = ''
+      },
+      validacaoFormulario(){
+        let validator = true
+        if(this.titulo === '') validator = false
+        if(this.descricao === '') validator = false
+        if( this.salario === '') validator = false
+        if(this.modalidade === '') validator = false
+        if(this.tipo === '') validator = false
+        return validator
       }
     }
 }

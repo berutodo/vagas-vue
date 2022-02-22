@@ -40,8 +40,8 @@ export default {
     },  
     methods: {
 fazerPesquisa(q){ //Pesquisa das vagas recebidas no props que vao ser enviadar para result e ser exibidas
-        this.result = this.vagas.filter(el => el.titulo.toLowerCase().indexOf(q.toLowerCase()) > -1)  
-        //this.result = this.vagas.filter(vagas => vagas.tipo == this.pesquisa)
+       this.result = this.vagas.filter(el => el.titulo.toLowerCase().indexOf(q.toLowerCase()) > -1) 
+       if(this.pesquisa == "") this.result = ""     
         return console.log(this.result)
         }
     }
