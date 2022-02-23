@@ -6,18 +6,14 @@
             <div class="col">
               <div class="form-group">
                 <label>Título da vaga</label>
-                <input type="text" v-model="pesquisa" @keyup="fazerPesquisa(pesquisa)" class="form-control" placeholder="Pesquise por palavras chaves, por exemplo 'PHP', 'Pleno', 'Analista'">
+                <input type="text" v-model="pesquisa" class="form-control" placeholder="Pesquise por palavras chaves, por exemplo 'PHP', 'Pleno', 'Analista'">
                 <small class="form-text text-muted">Informe palavras que estejam relacionadas com o título da vaga que você procura</small>
               </div>
-              <p v-for="(v,index) in result" :key="index">
-                  {{v.titulo}}{{v.tipo}}</p>
-              <hr>
-              {{vagas}}
             </div>
           </div>
           <div class="row">
             <div class="col">
-              <button class="btn btn-outline-dark mt-2" type="button">Buscar</button>
+              <button class="btn btn-outline-dark mt-2" type="button" @click="fazerPesquisa()">Buscar</button>
             </div>
           </div>
           </div>
@@ -39,12 +35,17 @@ export default {
         
     },  
     methods: {
-fazerPesquisa(q){ //Pesquisa das vagas recebidas no props que vao ser enviadar para result e ser exibidas
-       this.result = this.vagas.filter(el => el.titulo.toLowerCase().indexOf(q.toLowerCase()) > -1) 
-       if(this.pesquisa == "") this.result = ""     
-        return console.log(this.result)
-        }
-    }
+fazerPesquisa(){ //Pesquisa das vagas recebidas no props que vao ser enviadar para result e ser exibidas
+       /*this.result = this.vagas.filter(el => el.titulo.toLowerCase().includes(this.pesquisa.toLowerCase()))
+       
+       if(this.pesquisa == ""){
+         return this.result = ""
+       }else{
+       }     
+        }*/
+        return this.emitter.emit('filtrarVaga', this.pesquisa)
+} 
+    } 
 }
 </script>
 
